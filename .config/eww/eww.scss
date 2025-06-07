@@ -1,0 +1,166 @@
+// Variable Color's
+$background: rgba(54,117,136,0);
+$background_specific: #1A1B26;
+$foreground: #A9B1D6;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+$white: $foreground;
+// Global
+*{
+  all: unset;
+  font-size: 1.4rem;
+  font-family: JetBrainsMono Nerd Font;
+}
+
+scale trough {
+  all: unset;
+  background-color: $background;
+  border-radius: 5px;
+  min-height: 20px;
+  min-width: 80px;
+  padding: .5rem .4rem .3rem .5rem;
+  margin: .1rem .1rem .1rem .1rem;
+}
+
+// bars - general
+
+.eww_bar {
+}
+
+.eww_top {
+  background-color: $background;
+  border-radius: 10px;
+  padding: .3rem;
+  margin: .1rem;
+}
+.eww_middle {
+  background-color: $background;
+  border-radius: 10px;
+  padding: .3rem;
+  margin: .1rem;
+}
+.eww_bottom {
+  background-color: $background;
+  border-radius: 10px;
+  padding: .3rem;
+  margin: .1rem;
+}
+
+.revealer {
+  background-color: $background_specific;
+}
+
+.bribar trough highlight {
+  background-color: $yellow;
+  border-radius: 5px;
+}
+
+.volbar trough highlight {
+  background-color: $black;
+  border-radius: 5px;
+}
+
+// menus - general
+
+// Powermenu
+.power {
+  font-weight: bold;
+}
+
+// Workspaces
+.works {
+  min-width: 50px;
+  padding: .5rem .7rem .3rem .4rem;
+  margin: .1rem .5rem .1rem .1rem;
+  background-color: $background_specific;
+  border-radius: 35px;
+}
+
+.onon, .offon {
+  color: $blue;
+} 
+
+.onoff {
+  color: $magenta;
+}
+
+.offoff {
+  color: $green;
+}
+
+// icons
+
+.volume-icon {
+  color: $green;
+}
+
+.brightness-icon {
+  color: $yellow;
+}
+
+.button-bspres, .button-reb, .button-lock, .button-quit, .button-off,
+.wifi-icon, .bluetooth-icon, .volume-icon, .brightness-icon, .launcher-icon,
+.bat-icon, .time, .ram, .cpu{
+  min-width: 50px;
+  padding: .5rem .4rem .3rem .2rem;
+  margin: .1rem .1rem .1rem .1rem;
+  background-color: $background_specific;
+  border-radius: 35px;
+}
+
+.brightness-icon, .wifi-icon, .volume-icon {
+  padding-right: 0.8rem;
+}
+
+.bat-icon {
+  padding-right: .2rem;
+}
+
+.time {
+  padding-left: .4rem;
+  color: $magenta;
+}
+
+.ram, .cpu {
+  padding-left: .5rem;
+  color: $red;
+}
+
+.button-off{
+  color: $red;
+}
+.button-bspres{
+  color: $green;
+}
+.button-reb{
+  color: $yellow
+}
+.button-quit{
+  color: $magenta;
+}
+.button-lock{
+  color: $blue;
+}
+.bat-icon{
+  color: $blue;
+}
+.wifi {
+  color: $blue;
+}
+
+.wifi-icon{
+  color: $magenta;
+}
+.bluetooth-icon {
+  color: $green;
+}
+.launcher-icon{
+  color: $blue;
+}

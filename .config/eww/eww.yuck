@@ -1,0 +1,223 @@
+;; put path to aesthetic bar config files here ;;
+(defvar eww "$HOME/.config/eww/target/release/eww -c $HOME/.config/eww")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;							Widget Section's							 ;;	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Powermenu Widgets ;;
+(defwidget power []
+	(eventbox	:onhover "${eww} update power=true"	
+				:onhoverlost "${eww} update power=false" 
+	(box		:orientation "h"					
+				:space-evenly "false" 	 
+				:class "power"
+	(revealer	:transition "slideleft"				
+				:reveal power			 
+				:duration "550ms"
+                :class "revealer"
+	(box		:orientation "h"					
+				:space-evenly "false"
+	(button   	:class "button-bspres"  			
+				:tooltip "BSPWM Restart"
+				:onclick "bspc wm -r" "" )
+
+  	(button		:class "button-reb"					
+	  			:tooltip "Reboot"
+				:onclick "reboot" "")
+
+	(button		:class "button-quit" 				
+				:tooltip "Logout"
+				:onclick "pkill -u manish" "󰍃")
+
+	(button		:class "button-lock" 				
+				:tooltip "Lock Screen"
+				:onclick "betterlockscreen -l"	"")))
+	(button		:class "button-off"					
+				:tooltip "Shutdown"
+				:onclick "shutdown now"	"󰤂"))))
+(defvar power false)
+
+(defwidget workspaces []
+  (literal :content workspaces))
+(defpoll workspaces :interval "1s" "scripts/workspaces")
+
+;; Clock Widgets ;;
+(defwidget time []
+	(box	:orientation "h" 
+			:class "time"
+            :tooltip "Time: ${hour} HH ${min} MM"
+	(button	:onclick "scripts/popup calendar"	
+			:class "time-hour" hour)
+	(button	:onclick "scripts/popup calendar"	
+			:class "time-min"  min)))
+(defpoll hour	:interval "1s"	"date '+%H'")
+(defpoll min	:interval "1s"	"date '+%M'")
+
+;; Volume Widgets ;;
+(defwidget volume []
+	(eventbox :onhover "${eww} update volume=true" 		
+			  :onhoverlost "${eww} update volume=false"
+	(box      :orientation "h" 	  
+			  :space-evenly "false" 
+			  :spacing "2"
+	(revealer :transition "slideleft" 
+			  :reveal volume         
+			  :duration "550ms"
+	(scale    :class "volbar" 	  
+			  :value current-volume 
+			  :orientation "h"      
+			  :flipped true 
+			  :tooltip "Volume: ${current-volume}%" 
+			  :max 101 
+			  :min 0 
+			  :onchange "amixer -D pulse sset Master {}%" ))
+	(button   :onclick "scripts/volume toggle"   
+              :class "volume-icon" volume-icon))))
+(defpoll current-volume :interval "1s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll volume-icon :interval "1s" "scripts/volume icon")
+(defvar volume false)
+
+;; Brightness Widgets ;;
+(defwidget bright []
+  (eventbox :onhover "${eww} update bright=true"   
+  			:onhoverlost "${eww} update bright=false"
+  			(box    :orientation "h"  
+			  		:space-evenly "false"  
+					:spacing 2
+  			(revealer :transition "slideleft" 
+			  		  :reveal bright   
+					  :duration "550ms"
+  			(scale :class "bribar" 
+			  	   :value current-brightness 
+				   :tooltip "Brightness: ${current-brightness} / 400" 
+				   :onchange " ${eww} update current-brightness={} && brightnessctl set {}" 
+				   :orientation "h" 
+				   :flipped true 
+				   :max 401 
+				   :min 0))
+  			(label :class "brightness-icon" 
+			  	   :text "󰃠"
+                   :tooltip "Brightness: ${current-brightness} / 400"))))
+(defpoll current-brightness :interval "5s" "scripts/brightness")
+(defvar bright false)
+
+;; Launcher Widgets ;;
+(defwidget launcher []
+	(box :orientation "h" 
+		 :space-evenly "false" 
+		 :spacing -15
+  	(button :class "launcher-icon" 
+		   	:onclick "scripts/popup launcher" "󱓞")))
+
+;; Battery Widgets ;;
+(defwidget bat []
+	(box	:orientation "h"	
+			:space-evenly "false"
+	(label	:class "bat-icon"		
+			:text battery
+            :tooltip battery_info)))	
+(defpoll battery :interval "1s"	"scripts/battery icon")
+(defpoll battery_info :interval "1s" "scripts/battery info")
+
+;; Wifi Widgets ;;
+(defwidget wifi []
+	(box		:orientation "h"  
+				:tooltip wifi-name
+                :class "wifi"
+	(button		:onclick "scripts/popup wifi" 
+				:class "wifi-icon" wifi-icon)))
+(defpoll wifi-icon :interval "1s" "scripts/wifi icon")
+(defpoll wifi-name :interval "1s" "scripts/wifi name")
+
+(defwidget bluetooth  []
+	(box		:orientation "h"  
+                :class "bluetooth"
+	(button		:onclick "scripts/popup bluetooth" 
+				:class "bluetooth-icon" bluetooth-icon)))
+(defpoll bluetooth-icon :interval "1s" "scripts/bluetooth icon")
+
+;; RAM widgets ;;
+(defwidget ram []
+  (box  :orientation "h"
+        :tooltip "RAM Used: ${round(EWW_RAM.used_mem_perc,1)}% "
+  (label :class "ram"
+         :text "󰍛 ${round(EWW_RAM.used_mem_perc,1)}"))
+)
+
+;; CPU widgets ;;
+(defwidget cpu []
+  (box :orientation "h"
+       :tooltip "CPU Used: ${round(EWW_CPU.avg,1)}%"
+  (label :class "cpu"
+         :text "󰻠 ${round(EWW_CPU.avg,1)}"))
+)
+(defwidget cputemp []
+  (box :orientation "h"
+       :tooltip "CPU Temp: ${EWW_TEMPS['CORETEMP_PACKAGE_ID_0']}%"
+  (label :class "cpu"
+         :text " ${EWW_TEMPS['CORETEMP_PACKAGE_ID_0']}"))
+)
+
+;; Bar ;;
+
+(defwidget top []
+  (box :orientation "h"
+       :space-evenly "false"
+       :class "eww_top"
+       :halign "start"
+  (wifi)
+  (bluetooth)
+  (bat)
+  (workspaces)
+  (power)
+  )
+)
+
+(defwidget middle []
+  (box :orientation "h"
+       :space-evenly "false"
+       :class "eww_middle"
+       :halign "center"
+  (launcher)
+  )
+)
+
+(defwidget bottom []
+  (box :orientation "h"
+       :space-evenly "false"
+       :class "eww_bottom"
+       :halign "end"
+  (bright)
+  (volume)
+  (ram)
+  (cpu)
+  (cputemp)
+  (time))
+)
+
+(defwidget eww_bar []
+  (box :orientation "h"
+       :space-evenly "true"
+       :class "eww_bar"
+  (top)
+  (middle)
+  (bottom))
+)
+
+;; Windows ;;
+
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "0px"
+                               :y "0px"
+                               :width "100%"
+                               :height "70px"
+                               :anchor "top left")
+           :stacking "fg"
+           :reserve (struts :distance "70px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+  (eww_bar)
+)
+

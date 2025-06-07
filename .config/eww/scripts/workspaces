@@ -1,0 +1,49 @@
+#!/bin/sh
+
+geticon() {
+    if [ $1 = "on" ]; then
+        echo "󰪥"
+    elif [ $2 = "on" ]; then
+        echo "󰮍"
+    else
+        echo "󰄰"
+    fi
+}
+
+workspaces() {
+
+ws1=1
+ws2=2
+ws3=3
+ws4=4
+ws5=5
+
+# Unoccupied
+un="0"
+
+# check if Occupied
+o1=$(bspc query -D -d .occupied --names |  grep -q "$ws1" && echo "on" || echo "off" )
+o2=$(bspc query -D -d .occupied --names |  grep -q "$ws2" && echo "on" || echo "off" )
+o3=$(bspc query -D -d .occupied --names |  grep -q "$ws3" && echo "on" || echo "off" )
+o4=$(bspc query -D -d .occupied --names |  grep -q "$ws4" && echo "on" || echo "off" )
+o5=$(bspc query -D -d .occupied --names |  grep -q "$ws5" && echo "on" || echo "off" )
+
+# check if Focused
+f1=$(bspc query -D -d focused --names |  grep -q "$ws1" && echo "on" || echo "off" )
+f2=$(bspc query -D -d focused --names |  grep -q "$ws2" && echo "on" || echo "off" )
+f3=$(bspc query -D -d focused --names |  grep -q "$ws3" && echo "on" || echo "off" )
+f4=$(bspc query -D -d focused --names |  grep -q "$ws4" && echo "on" || echo "off" )
+f5=$(bspc query -D -d focused --names |  grep -q "$ws5" && echo "on" || echo "off" )
+
+i1=$(geticon $f1 $o1)
+i2=$(geticon $f2 $o2)
+i3=$(geticon $f3 $o3)
+i4=$(geticon $f4 $o4)
+i5=$(geticon $f5 $o5)
+
+echo 	"(box	:class \"works\" :orientation \"h\"	:halign \"center\"	 :space-evenly \"true\" :spacing \"15\" (button :onclick \"bspc desktop -f $ws1\"	:class	\"$o1$f1\"	\"$i1\") (button :onclick \"bspc desktop -f $ws2\"	:class \"$o2$f2\"	 \"$i2\") (button :onclick \"bspc desktop -f $ws3\"	:class \"$o3$f3\" \"$i3\") (button :onclick \"bspc desktop -f $ws4\"	:class \"$o4$f4\"	\"$i4\") (button :onclick \"bspc desktop -f $ws5\"	:class \"$o5$f5\" \"$i5\" ))"
+}
+
+workspaces
+
+

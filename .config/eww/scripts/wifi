@@ -1,0 +1,19 @@
+#!/bin/sh
+
+$wifistate="$(cat "/sys/class/net/w*/operstate")"
+$wifilength=${#wifistate}
+
+symbol() {
+    if [ $wifistate -eq 4 ]; then
+        echo "󰖪"
+    else
+        echo ""
+    fi
+}
+
+name() {
+    nmcli | grep "^w" | sed 's/\ connected\ to\ /Connected to /g' | cut -d ':' -f2
+}
+
+[ "$1" = "icon" ] && symbol && exit
+[ "$1" = "name" ] && name && exit

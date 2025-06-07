@@ -1,0 +1,17 @@
+*
+
+!.gitignore
+!.config/
+!.config/nvim
+!.config/nvim/**
+!.config/ghostty
+!.config/ghostty/**
+!.config/bspwm
+!.config/bspwm/**
+!.config/sxhkd
+!.config/sxhkd/**
+!.config/eww
+!.config/eww/**
+.config/eww/target
+
+.config/nvim/.netrwhist

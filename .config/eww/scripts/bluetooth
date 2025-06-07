@@ -1,0 +1,7 @@
+#!/bin/sh
+
+symbol() {
+    hciconfig | grep -q "UP" && echo "" || echo "󰂲"
+}
+
+[ "$1" = "icon" ] && symbol && exit
