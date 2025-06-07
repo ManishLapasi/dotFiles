@@ -1,5 +1,9 @@
 *
 
+!readme.md
+!pics
+!pics/**
+
 !.gitignore
 !.config/
 !.config/nvim
