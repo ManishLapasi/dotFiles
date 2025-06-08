@@ -29,3 +29,7 @@ keymap.set("n", "<leader>d", ":bd<CR>")
 
 -- show diagnostics in floating window
 keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
+-- toggle cyberdream theme
+keymap.set("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
+

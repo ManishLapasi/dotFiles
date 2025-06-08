@@ -96,11 +96,11 @@
 				   :flipped true 
 				   :max 401 
 				   :min 0))
-  			(label :class "brightness-icon" 
-			  	   :text "󰃠"
-                   :tooltip "Brightness: ${current-brightness} / 400"))))
+  			(button :class "brightness-icon" 
+			  	    :onclick "scripts/mode toggle" "${mode}"))))
 (defpoll current-brightness :interval "5s" "scripts/brightness")
 (defvar bright false)
+(defpoll mode :interval "1s" "scripts/mode mode")
 
 ;; Launcher Widgets ;;
 (defwidget launcher []
