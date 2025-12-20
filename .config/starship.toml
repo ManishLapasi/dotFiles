@@ -1,0 +1,32 @@
+# Simple format: user@hostname:path (branch) $
+format = "$username[@](bold white)$hostname:$directory$git_branch$git_status$character"
+
+[username]
+style_user = "bold green"
+style_root = "bold red"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = "[$hostname](bold green)"
+disabled = false
+
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncate_to_repo = false
+format = "[$path]($style) "
+
+[git_branch]
+symbol = ""
+format = "[(on $symbol$branch)]($style) "
+style = "bold purple"
+
+[git_status]
+disabled = true
+
+[character]
+success_symbol = "[\\$](bold white)"
+error_symbol = "[\\$](bold red)"

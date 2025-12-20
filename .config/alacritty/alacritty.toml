@@ -1,0 +1,9 @@
+general.import = [
+	"~/.config/alacritty/gruvbox-dark.toml"
+]
+general.live_config_reload = true
+[window]
+    opacity = 0.8
+    padding.x = 10
+    padding.y = 10
+    dynamic_padding = false

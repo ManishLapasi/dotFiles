@@ -1,0 +1,11 @@
+(defpoll active_workspace 
+  :interval "500ms"
+  :initial "1"
+  "hyprctl activeworkspace -j | jq -r '.id'")
+
+(defwidget workspaces []
+  (eventbox :class "eventbox"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "5"
+      (for workspace in "[1,2,3,4,5]"
+        (button :class "workspace_btn" :onclick "hyprctl dispatch workspace ${workspace}"
+          (label :text "${workspace == active_workspace ? '' : ''}" :class "workspace_label"))))))

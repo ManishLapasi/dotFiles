@@ -1,2 +1,9 @@
 */
 *.bash*
+!.config/
+!.config/eww/**
+!.config/eww/
+!.config/nvim/**
+!.config/nvim/
+!.config/alacritty/**
+!.config/alacritty/
