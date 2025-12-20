@@ -6,7 +6,6 @@
 (include "widgets/cpu_usage.yuck")
 (include "widgets/ram_usage.yuck")
 (include "widgets/battery_percent.yuck")
-(include "widgets/audio.yuck")
 (include "widgets/powermenu.yuck")
 
 (defwidget bar []
@@ -15,7 +14,7 @@
             (updates))
         (box :class "center" :halign "start" :hexpand false :vexpand false
             (workspaces))
-        (box :class "right" :halign "end" :hexpand false :vexpand false spacing: "3"
+        (box :class "right" :halign "end" :hexpand false :vexpand false :spacing "1"
             (cpu_usage)
             (ram_usage)
             (battery_percent)
