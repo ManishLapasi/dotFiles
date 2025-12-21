@@ -1,4 +1,4 @@
-(defpoll h :interval "1s" `date +\"%I\"`)
+(defpoll h :interval "1s" `date +\"%H\"`)
 (defpoll m :interval "1s" `date +\"%M\"`)
 (defpoll s :interval "1s" `date +\"%S\"`)
 

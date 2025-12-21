@@ -10,6 +10,10 @@
 
 /* --------------------------------------- Common Styles -------------------------------------- */
 
+.centerbox {
+    all: unset;
+}
+
 /* Style for module */
 .module {
     margin-right: 8px;
@@ -17,10 +21,6 @@
     padding-right: 2px;
     background-color: rgba(40,40,40,0.8);
     border-radius: 5px;
-}
-
-.eventbox {
-  all: unset;
 }
 
 /* Remove the `margin-right` for the last module */
