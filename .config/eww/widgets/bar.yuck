@@ -12,7 +12,7 @@
     (centerbox :orientation "h" :class "bar"
         (box :class "left" :halign "start" :hexpand false :vexpand false
             (updates))
-        (box :class "center" :halign "start" :hexpand false :vexpand false
+        (box :class "center" :halign "center" :hexpand false :vexpand false
             (workspaces))
         (box :class "right" :halign "end" :hexpand false :vexpand false :spacing "1"
             (cpu_usage)

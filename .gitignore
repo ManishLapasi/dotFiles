@@ -7,3 +7,6 @@
 !.config/nvim/
 !.config/alacritty/**
 !.config/alacritty/
+!.config/hypr/
+!.config/hypr/**
+

@@ -3,7 +3,7 @@
     padding: 0;
     font-family: "JetBrains Mono Nerd Font";
     font-weight: 700;
-    font-size: 12px;
+    font-size: 8px;
     color: #e0def4;
     background: transparent;
 }
@@ -13,7 +13,10 @@
 /* Style for module */
 .module {
     margin-right: 8px;
-    background: transparent;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: rgba(40,40,40,0.8);
+    border-radius: 5px;
 }
 
 .eventbox {
@@ -35,7 +38,7 @@
 }
 
 .updates {
-    color: #f6c177;
+    color: #98971a;
 }
 
 .workspace_btn {
@@ -44,11 +47,11 @@
     margin-top: 1px;
     margin-bottom: 1px;
     border: none;
-    margin: 2px;
+    margin-right: 5px;
 }
 
 .workspace_label {
-   color: #eb6f92; 
+   color: #b16286; 
    font-size: 12px;
 }
 
@@ -57,15 +60,15 @@
 }
 
 .ram {
-    color: #31748f;
+    color: #83a598;
 }
 
 .time {
-    color: #c4a7e7;
+    color: #ebbcba;
 }
 
 .net_status {
-    color: #9ccfd8;
+    color: #83a598;
 }
 
 /* -------------------------------------- Desktop Widget -------------------------------------- */

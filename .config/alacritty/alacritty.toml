@@ -2,6 +2,9 @@ general.import = [
 	"~/.config/alacritty/gruvbox-dark.toml"
 ]
 general.live_config_reload = true
+[font]
+    size = 8.0
+
 [window]
     opacity = 0.8
     padding.x = 10
