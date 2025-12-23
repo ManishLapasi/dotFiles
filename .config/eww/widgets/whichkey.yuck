@@ -1,0 +1,36 @@
+(defpoll keybinds :interval "999999h"
+  :initial '{"l1":[],"l2":[],"l3":[]}'
+  `bash /home/manish/.config/eww/scripts/whichkey.sh | jq -R 'split("%") | map(select(. != ""))| map(split("|") | {key: .[0], definition: .[1]})| [range(0; length; 10) as $i | .[$i:$i+10]] | {l1: (.[0] // []), l2: (.[1] // []), l3: (.[2] // [])}'`)
+(defwidget whichkey []
+  (box :class "keybinds-container" 
+       :orientation "v"
+       :spacing 0
+       :hexpand false :vexpand false
+    (box :class "keybinds-grid"
+       :orientation "h"
+       :spacing 1
+       :style "border-radius: 5px 5px 0 0"
+       :hexpand false :vexpand false
+      (for entry in {keybinds.l1}
+      (box :class "keybind-item" 
+           :orientation "h" 
+           :space-evenly false 
+           :spacing 1
+           :hexpand false :vexpand false
+        (label :class "keybind_label" :text {entry.key})
+        (label :class "keybind_label" :text "→")
+        (label :class "keybind_label" :wrap true  :text {entry.definition}))))
+    (box :class "keybinds-grid"
+       :orientation "h"
+       :spacing 1
+       :style "border-radius: 0 0 5px 5px"
+       :hexpand false :vexpand false
+      (for entry in {keybinds.l2}
+      (box :class "keybind-item" 
+           :orientation "h" 
+           :space-evenly false 
+           :hexpand false :vexpand false
+           :spacing 1
+        (label :class "keybind_label"  :text {entry.key})
+        (label :class "keybind_label"  :text "→")
+        (label :class "keybind_label" :wrap true  :text {entry.definition}))))))

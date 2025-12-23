@@ -70,7 +70,26 @@
 .net_status {
     color: #83a598;
 }
+/* -------------------------------------- Whichkey Widget -------------------------------------- */
+.keybind-container {
+}
 
+.keybinds-grid {
+  all: unset;
+  background-color: rgba(40,40,40,1);
+}
+
+.keybind-item {
+  padding: 2px;
+ }
+
+.keybind_label {
+   all: unset;
+   margin: 2px;
+   padding: 2px;
+   color: #b16286; 
+   font-size: 8px;
+}
 /* -------------------------------------- Desktop Widget -------------------------------------- */
 
 .desktop {

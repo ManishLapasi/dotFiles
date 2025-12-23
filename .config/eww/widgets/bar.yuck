@@ -1,4 +1,3 @@
-(include "widgets/date.yuck")
 (include "widgets/time.yuck")
 (include "widgets/workspaces.yuck")
 (include "widgets/net_status.yuck")

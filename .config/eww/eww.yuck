@@ -1,4 +1,5 @@
 (include "widgets/bar.yuck")
+(include "widgets/whichkey.yuck")
 
 (defwindow bar
 	   :monitor 0
@@ -10,4 +11,16 @@
 	   :stacking "fg"
        :exclusive false 
     (bar))
+
+(defwindow whichkey 
+	   :monitor 0
+       :vexpand true
+	   :geometry (geometry :x "0px"
+        	               :y "10px"
+                	       :width "1260px"
+                           :height "50px"
+	                       :anchor "bottom center")
+	   :stacking "fg"
+       :exclusive false 
+    (whichkey))
            
