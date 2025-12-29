@@ -1,5 +1,6 @@
 */
 *.bash*
+*.*
 .gitconfig
 !.config/
 !.config/eww/**
@@ -10,4 +11,7 @@
 !.config/alacritty/
 !.config/hypr/
 !.config/hypr/**
+!Pictures/
+!Pictures/Wallpapers
+!Pictures/Wallpapers/*.*
 

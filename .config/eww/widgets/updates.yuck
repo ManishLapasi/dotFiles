@@ -4,4 +4,4 @@
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
         (label :text "󰮯 " :class "updates")
         (label :text update_no :class "updates" )
-        (label :text "pending updates" :class "updates")))
+        (label :text "updates" :class "updates")))

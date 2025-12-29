@@ -2,6 +2,7 @@
 (include "widgets/workspaces.yuck")
 (include "widgets/net_status.yuck")
 (include "widgets/updates.yuck")
+(include "widgets/cpu_temp.yuck")
 (include "widgets/cpu_usage.yuck")
 (include "widgets/ram_usage.yuck")
 (include "widgets/battery_percent.yuck")
@@ -9,13 +10,14 @@
 
 (defwidget bar []
     (centerbox :orientation "h" :class "bar"
-        (box :class "left" :halign "start" :hexpand false :vexpand false
-            (updates))
+        (box :class "left" :halign "start" :hexpand false :vexpand false :spacing "1"
+            (updates)
+            (cpu_usage)
+            (ram_usage))
         (box :class "center" :halign "center" :hexpand false :vexpand false
             (workspaces))
         (box :class "right" :halign "end" :hexpand false :vexpand false :spacing "1"
-            (cpu_usage)
-            (ram_usage)
+            (cpu_temp)
             (battery_percent)
             (net_status)
             (time))))

@@ -9,7 +9,6 @@
     (box :class "keybinds-grid"
        :orientation "h"
        :spacing 1
-       :style "border-radius: 5px 5px 0 0"
        :hexpand false :vexpand false
       (for entry in {keybinds.l1}
       (box :class "keybind-item" 
