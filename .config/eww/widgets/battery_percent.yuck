@@ -1,4 +1,4 @@
-(defpoll battery_percent :interval "1s" `bash /home/manish/.config/eww/scripts/battery_percent.sh`)
+(defpoll battery_percent :interval "1s" `bash ~/.config/eww/scripts/battery_percent.sh`)
 
 (defwidget battery_percent []
     (box :class "module" :space-evenly "true" :orientation "h" :spacing "1"

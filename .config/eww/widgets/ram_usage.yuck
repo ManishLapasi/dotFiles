@@ -1,4 +1,4 @@
-(defpoll ram_usage :interval "1s" `bash /home/manish/.config/eww/scripts/ram_usage.sh`)
+(defpoll ram_usage :interval "1s" `bash ~/.config/eww/scripts/ram_usage.sh`)
 
 (defwidget ram_usage []
     (box :class "module" :space-evenly "true" :orientation "h" :spacing "3" :width "20px"

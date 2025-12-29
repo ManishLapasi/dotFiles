@@ -1,4 +1,4 @@
-(defpoll update_no :interval "600s" `bash /home/manish/.config/eww/scripts/pacman_updates.sh`)
+(defpoll update_no :interval "600s" `bash ~/.config/eww/scripts/pacman_updates.sh`)
 
 (defwidget updates []
     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 

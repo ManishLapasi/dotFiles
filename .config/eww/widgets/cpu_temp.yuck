@@ -1,4 +1,4 @@
-(defpoll cpu_temp :interval "1s" `bash /home/manish/.config/eww/scripts/cpu_temp.sh`)
+(defpoll cpu_temp :interval "1s" `bash ~/.config/eww/scripts/cpu_temp.sh`)
 
 (defwidget cpu_temp []
     (box :class "module" :space-evenly "true" :orientation "h" :spacing "1" :width "20px"

@@ -1,6 +1,6 @@
 (defpoll keybinds :interval "999999h"
   :initial '{"l1":[],"l2":[],"l3":[]}'
-  `bash /home/manish/.config/eww/scripts/whichkey.sh | jq -R 'split("%") | map(select(. != ""))| map(split("|") | {key: .[0], definition: .[1]})| [range(0; length; 10) as $i | .[$i:$i+10]] | {l1: (.[0] // []), l2: (.[1] // []), l3: (.[2] // [])}'`)
+  `bash ~/.config/eww/scripts/whichkey.sh | jq -R 'split("%") | map(select(. != ""))| map(split("|") | {key: .[0], definition: .[1]})| [range(0; length; 10) as $i | .[$i:$i+10]] | {l1: (.[0] // []), l2: (.[1] // []), l3: (.[2] // [])}'`)
 (defwidget whichkey []
   (box :class "keybinds-container" 
        :orientation "v"
