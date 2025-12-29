@@ -1,0 +1,31 @@
+#!/bin/sh
+
+bat=/sys/class/power_supply/BAT1/
+per="$(cat $bat/capacity)"
+batstatus="$(cat $bat/status)"
+length=${#batstatus}
+icon() {
+    
+    if [ "$length" -ne 11 ]; then
+        echo -n "󰂄"
+    else
+        if [ $per -gt 75 ]; then
+            echo -n "󱊣"
+        elif [ $per -gt 50 ]; then
+            echo "󱊢"
+        elif [ $per -gt 25 ]; then
+            echo "󱊡"
+        else
+            echo "󰂎"
+        fi
+    fi
+    exit
+}
+
+info() {
+    echo "Battery: $per %\nStatus: $batstatus"
+}
+
+[ "$1" = "icon" ] && icon && exit
+[ "$1" = "info" ] && info && exit
+exit

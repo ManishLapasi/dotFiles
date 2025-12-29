@@ -1,0 +1,19 @@
+#!/bin/sh
+
+icon() {
+    res="$(amixer -D pulse sget Master | grep '\[on\]' | awk 'NR==1')"
+    length=${#res}
+    if [ $length = '0' ]; then
+        echo "󰝟"
+    else
+        echo ""
+    fi
+}
+
+toggle() {
+    res="$(amixer -D pulse sset Master toggle)"
+}
+
+[ "$1" = "icon" ] && icon && exit
+[ "$1" = "toggle" ] && toggle && exit
+exit

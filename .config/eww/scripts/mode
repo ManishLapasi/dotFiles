@@ -1,0 +1,21 @@
+#!/bin/sh
+
+mode() {
+    echo "$(cat ~/.config/nvim/lua/plugins/_theme.lua | grep -q auto && echo '' || echo '󰖙')"
+}
+
+toggle() {
+    currmode="$(cat ~/.config/nvim/lua/plugins/_theme.lua | grep -q auto && echo 'dark' || echo 'light')"
+    if [ $currmode = "dark" ]; then
+        sed -i "s/auto/light/" ~/.config/nvim/lua/plugins/_theme.lua
+        sed -i "s/dark/light/" ~/.config/ghostty/config
+    else
+        sed -i "s/light/auto/" ~/.config/nvim/lua/plugins/_theme.lua
+        sed -i "s/light/dark/" ~/.config/ghostty/config
+    fi
+
+}
+
+[ $1 = "mode" ] && mode && exit 
+[ $1 = "toggle" ] && toggle & exit
+exit
