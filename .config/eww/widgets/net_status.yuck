@@ -1,4 +1,4 @@
-(defpoll net_status :interval 20s" `bash ~/.config/eww/scripts/network.sh`)
+(defpoll net_status :interval "20s" `bash ~/.config/eww/scripts/network.sh`)
 
 (defwidget net_status []
     (box :class "module" :hexpand false :vexpand false :space-evenly "true" :orientation "h"
