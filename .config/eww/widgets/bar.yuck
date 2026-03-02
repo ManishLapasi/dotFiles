@@ -1,5 +1,6 @@
 (include "widgets/time.yuck")
 (include "widgets/workspaces.yuck")
+(include "widgets/bluetooth.yuck")
 (include "widgets/net_status.yuck")
 (include "widgets/updates.yuck")
 (include "widgets/cpu_temp.yuck")
@@ -19,5 +20,6 @@
         (box :class "right" :halign "end" :hexpand false :vexpand false :spacing "1"
             (cpu_temp)
             (battery_percent)
+            (bluetooth)
             (net_status)
             (time))))

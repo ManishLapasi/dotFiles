@@ -1,0 +1,6 @@
+(defpoll bluetooth_status :interval "5s" `bash ~/.config/eww/scripts/bluetooth.sh`)
+
+(defwidget bluetooth []
+    (box :class "module" :hexpand false :vexpand false :space-evenly "true" :orientation "h"
+      (button :onclick "bash ~/.config/eww/scripts/popup.sh bluetooth"
+        (label :text bluetooth_status :class "bluetooth_status" ))))
