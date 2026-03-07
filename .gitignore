@@ -13,6 +13,10 @@
 !.config/hypr/**
 !.config/wofi/
 !.config/wofi/**
+!.config/notifs
+!.config/notifs/**
+!.config/wpaperd
+!.config/wpaperd/**
 !Pictures/
 !Pictures/Wallpapers
 !Pictures/Wallpapers/*.*
