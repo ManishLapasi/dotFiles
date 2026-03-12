@@ -38,8 +38,6 @@ plugins {
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
-load_plugins {
-}
 web_client {
     font "monospace"
 }
@@ -54,7 +52,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "gruvbox-dark"
+//theme "gruvbox-dark"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -73,12 +71,12 @@ theme "gruvbox-dark"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-default_layout "compact"
+//default_layout "default_tab_template"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
 // 
-// layout_dir "/tmp"
+//layout_dir "~/.config/zellij/layouts"
  
 // The folder in which Zellij will look for themes
 // (Requires restart)
