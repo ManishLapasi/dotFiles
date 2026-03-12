@@ -17,6 +17,8 @@
 !.config/notifs/**
 !.config/wpaperd
 !.config/wpaperd/**
+!.config/zellij/
+!.config/zellij/**
 !Pictures/
 !Pictures/Wallpapers
 !Pictures/Wallpapers/*.*

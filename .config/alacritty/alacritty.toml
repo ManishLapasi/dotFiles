@@ -2,6 +2,11 @@ general.import = [
 	"~/.config/alacritty/gruvbox-dark.toml"
 ]
 general.live_config_reload = true
+
+[terminal.shell]
+program = "/bin/bash"  # or bash, fish, whatever you use
+args = ["-c", "zellij"]
+
 [font]
     size = 8.0
 
