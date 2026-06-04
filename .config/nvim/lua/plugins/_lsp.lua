@@ -18,7 +18,7 @@ return {
                 print("LSP started: " .. client.name)
             end
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("lspconfig").pylsp.setup({
+            vim.lsp.config("pylsp", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 settings = {
@@ -33,7 +33,7 @@ return {
                 }
             })
 
-            require("lspconfig").rust_analyzer.setup({
+            vim.lsp.config("rust_analyzer", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 settings = {
@@ -49,17 +49,17 @@ return {
                 }
             })
 
-            require("lspconfig").gopls.setup({
+            vim.lsp.config("gopls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
 
-            require("lspconfig").svelte.setup({
+            vim.lsp.config("svelte", {
                 on_attach = on_attach,
                 capabilities = capabilities,
             })
 
-            require("lspconfig").ts_ls.setup({
+            vim.lsp.config("ts_ls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
             })

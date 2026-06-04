@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap
+vim.env.TEXMFHOME = vim.fn.expand('~/texmf')
 
 -- universal clipboard
 vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
@@ -29,6 +30,10 @@ keymap.set("n", "<leader>d", ":bd<CR>")
 
 -- show diagnostics in floating window
 keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
+-- show definitions and implementations
+keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<cr> zz")
+keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<cr> zz")
 
 -- toggle cyberdream theme
 keymap.set("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
