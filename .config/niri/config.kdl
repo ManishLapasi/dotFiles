@@ -1,0 +1,182 @@
+// niri config — translated from hyprland.conf
+// Save to ~/.config/niri/config.kdl
+// Docs: https://yalter.github.io/niri/  (config reference is excellent)
+// niri hot-reloads this file on save and shows a notification if it fails to parse.
+
+//// INPUT ////////////////////////////////////////////////////////////////////
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // variant ""
+            // options ""
+        }
+    }
+
+    touchpad {
+        // tap
+        // niri's touchpad natural-scroll default already matches 
+        // Hyprland `natural_scroll = false`. If scrolling feels inverted,
+        // add or remove the `natural-scroll` flag here.
+    }
+
+    mouse {
+        // accel-speed 0.0   // your `sensitivity = 0` => no modification
+    }
+
+    // Hyprland `follow_mouse = 1`
+    focus-follows-mouse
+
+    // 3-finger horizontal swipe to move between workspaces/columns is built in.
+}
+
+//// OUTPUTS ///////////////////////////////////////////////////////////////////
+// `monitor=,preferred,auto,auto` => niri auto-detects. Only add a block to override.
+// output "eDP-1" {
+//     mode "1920x1080@60.000"
+//     scale 1.0
+//     position x=0 y=0
+// }
+
+//// LAYOUT ////////////////////////////////////////////////////////////////////
+layout {
+    gaps 10                     // Hyprland gaps_in/gaps_out, unified into one value
+
+    struts {
+        // top 25
+    }
+
+    border {
+        off                     // matches Hyprland border_size = 0
+    }
+
+    focus-ring {
+        // Kept ON — strongly recommended in scrollable tiling so can see
+        // which column keybinds will act on. Comment `off` back in to
+        // get the fully borderless Hyprland look.
+        width 2
+        active-color "#7aa2f7"
+        inactive-color "#505050"
+        // off
+    }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { }
+}
+
+// Rounding (Hyprland decoration.rounding = 10) is a per-window rule in niri:
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+// Shadow + blur ARE supported in recent niri, but the exact KDL has shifted
+// across versions and a syntax error rejects the WHOLE config. Verify against
+// installed niri's docs, then uncomment. Rough shape:
+//
+// layout {
+//     shadow {
+//         on
+//         softness 30
+//         spread 5
+//         offset x=0 y=5
+//         color "#1a1a1aee"
+//     }
+// }
+//
+// blur { ... }   // check `niri validate` after editing
+
+//// MISC //////////////////////////////////////////////////////////////////////
+prefer-no-csd                    // clean, borderless server-side look
+
+cursor {
+    xcursor-size 24              // Hyprland XCURSOR_SIZE = 24
+}
+
+hotkey-overlay {
+    skip-at-startup              // don't show the hotkey cheatsheet on launch
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+    // Add only things niri doesn't already set. Most of your Hyprland env
+    // lines (XDG_CURRENT_DESKTOP, XDG_SESSION_TYPE, etc.) are handled by niri.
+}
+
+//// AUTOSTART /////////////////////////////////////////////////////////////////
+spawn-at-startup "wpaperd" "-d"
+spawn-at-startup "swaync"
+// eww: spawning the daemon + opening the bar. If `open` doesn't auto-start the
+// daemon, use spawn-sh-at-startup "eww daemon && eww open bar" instead.
+spawn-at-startup "eww" "open" "bar"
+
+//// WINDOW RULES //////////////////////////////////////////////////////////////
+window-rule {
+    match app-id="wofi"
+    opacity 0.8
+}
+
+//// KEYBINDS //////////////////////////////////////////////////////////////////
+binds {
+    // --- launchers / apps ---
+    Mod+Q { spawn "alacritty"; }
+    Mod+C { close-window; }
+    Mod+E { spawn "thunar"; }
+    Mod+R { spawn "wofi" "--show" "drun"; }
+    Mod+V { toggle-window-floating; }
+    Mod+L { spawn "hyprlock"; }   // works on niri; swap for swaylock if the red-flash bugs you
+
+    // --- exit ---
+    // niri shows a confirmation dialog by default. Add skip-confirmation=true
+    // to match Hyprland's instant exit: quit skip-confirmation=true
+    Mod+M { quit; }
+
+    // --- focus (arrows) ---
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+
+    // --- workspaces ---
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+
+    // --- scroll workspaces with Mod + wheel ---
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // --- media / brightness (faithful to your bindel/bindl) ---
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86MonBrightnessUp   { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+    XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
+
+    // --- niri essentials you didn't have but will want ---
+    // (scrollable tiling needs a way to reorder columns and stack windows)
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+    Mod+F      { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+O      { toggle-overview; }
+}
