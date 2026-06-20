@@ -126,36 +126,3 @@
     font-size: 32px;
     color: #eb6f92;
 }
-
-/* -------------------------------------Powermenu Widget---------------------------------------*/
-.powermenu {
-    border-radius: 10px;
-    border: 2px solid #eb6f92;
-}
-
-.powermenu_button {
-    background: transparent;
-    padding: 20px;
-}
-
-.powermenu_button:nth-child(1) {
-    border-radius: 10px 10px 0 0;
-}
-
-.powermenu_button:nth-child(2) {
-    border-radius: 0 0 10px 10px;
-}
-
-.powermenu_button:hover {
-    background: #2a283e;
-}
-
-.powermenu_label_restart {
-    color: #c4a7e7;
-    font-size: 32px;
-}
-
-.powermenu_label_poweroff {
-    color: #eb6f92;
-    font-size: 32px;
-}

@@ -43,7 +43,7 @@ layout {
     gaps 10                     // Hyprland gaps_in/gaps_out, unified into one value
 
     struts {
-        // top 25
+        // top 20
     }
 
     border {
@@ -104,8 +104,6 @@ hotkey-overlay {
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 environment {
-    // Add only things niri doesn't already set. Most of your Hyprland env
-    // lines (XDG_CURRENT_DESKTOP, XDG_SESSION_TYPE, etc.) are handled by niri.
 }
 
 //// AUTOSTART /////////////////////////////////////////////////////////////////
@@ -119,6 +117,14 @@ spawn-at-startup "eww" "open" "bar"
 window-rule {
     match app-id="wofi"
     opacity 0.8
+}
+
+layer-rule {
+    match namespace="^powermenu$"
+
+    background-effect {
+        blur true
+    }
 }
 
 //// KEYBINDS //////////////////////////////////////////////////////////////////

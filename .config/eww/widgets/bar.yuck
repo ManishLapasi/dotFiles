@@ -7,7 +7,6 @@
 (include "widgets/cpu_usage.yuck")
 (include "widgets/ram_usage.yuck")
 (include "widgets/battery_percent.yuck")
-(include "widgets/powermenu.yuck")
 
 (defwidget bar []
     (centerbox :orientation "h" :class "bar"
