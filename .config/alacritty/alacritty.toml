@@ -8,7 +8,7 @@ program = "/bin/bash"  # or bash, fish, whatever you use
 args = ["-c", "zellij"]
 
 [font]
-    size = 8.0
+    size = 10.0
 
 [window]
     opacity = 0.9
