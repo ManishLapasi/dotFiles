@@ -7,6 +7,7 @@
 (include "widgets/cpu_usage.yuck")
 (include "widgets/ram_usage.yuck")
 (include "widgets/battery_percent.yuck")
+(include "widgets/tailscale.yuck")
 
 (defwidget bar []
     (centerbox :orientation "h" :class "bar"
@@ -15,7 +16,7 @@
             (cpu_usage)
             (ram_usage))
         (box :class "center" :halign "center" :hexpand false :vexpand false
-            (workspaces))
+            (tailscale))
         (box :class "right" :halign "end" :hexpand false :vexpand false :spacing "1"
             (cpu_temp)
             (battery_percent)

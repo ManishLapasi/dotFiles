@@ -92,7 +92,6 @@
    color: #b16286; 
    font-size: 8px;
 }
-/* -------------------------------------- Desktop Widget -------------------------------------- */
 
 .desktop {
     background-color: transparent;
@@ -126,3 +125,33 @@
     font-size: 32px;
     color: #eb6f92;
 }
+
+/* -------------------------------------- Tailscale Widget -------------------------------------- */
+
+.ts-box {
+  padding: 4px;
+}
+
+.ts-ip {
+  color: #9aa0a6;
+}
+
+.ts-track {
+  min-width: 46px;
+  min-height: 16px;
+  border-radius: 12px;
+  padding: 3px;
+  background-color: #3a3a3a;          
+  transition: background-color 200ms ease;
+}
+.ts-track.on  { background-color: #2563eb; }   
+
+.ts-knob {
+  min-width: 18px;
+  min-height: 16px;
+  border-radius: 9px;
+  background-color: #ffffff;
+  margin-left: 0;                     
+  transition: margin-left 200ms ease;
+}
+.ts-track.on .ts-knob { margin-left: 30px; }

@@ -1,0 +1,17 @@
+(defpoll ts-state :interval "2s"
+  `tailscale status --json 2>/dev/null | jq -r '.BackendState' 2>/dev/null || echo "Unknown"`)
+
+(defpoll ts-ip :interval "5s"
+  `tailscale ip -4 2>/dev/null | head -n1`)
+
+(defwidget tailscale []
+  (box :class "ts-box"
+       :orientation "h"
+       :space-evenly false 
+       :spacing 10
+    (button :class {ts-state == "Running" ? "ts-track on" : "ts-track off"}
+            :onclick "~/.config/eww/scripts/tailscale.sh"
+      (box :class "ts-knob" :halign "start" :valign "center"))
+      (box :orientation "h" :space-evenly true :spacing 8
+        (label :class "ts-ip"
+           :text {ts-state == "Running" ? ts-ip : "Disconnected" }))))
